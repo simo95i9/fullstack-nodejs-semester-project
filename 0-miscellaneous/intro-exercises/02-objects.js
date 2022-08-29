@@ -8,11 +8,17 @@ const alienMessage = {
 };
 
 // Log the message
+process.stdout.write("alienMessage = ")
+console.dir(alienMessage)
+
 
 // --------------------------------------
 // Exercise 2 - Defining an object.
 
 // Create an object that has your name and age.
+const myObject = { name: "Simon", age: 24}
+process.stdout.write("myObject = ")
+console.dir(myObject)
 
 
 // --------------------------------------
@@ -21,6 +27,10 @@ const alienMessage = {
 const stackOverflow = {};
 
 // make a rule called isAllowed and let the value be true
+stackOverflow.isAllowed = true
+process.stdout.write("stackOverflow = ")
+console.dir(stackOverflow)
+
 
 // --------------------------------------
 // Exercise 4 - Remove a property
@@ -30,6 +40,9 @@ const thisSong = {
 }
 
 // remove the property "description" and add a property called "about" that should say "Just a tribute."
-
+delete thisSong.description
+thisSong.about = "Just a tribute"
+process.stdout.write("thisSong = ")
+console.dir(thisSong)
 
 // --------------------------------------
