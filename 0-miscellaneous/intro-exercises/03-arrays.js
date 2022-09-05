@@ -75,6 +75,11 @@ for (const letter of lettersExpanded) {
 }
 console.log()
 
+
+// alternative, possibly better, solution
+const everySecondLetter = lettersExpanded.filter((_, idx) => idx % 2 === 1).join(", ")
+console.log(`everySecondLetter = ${everySecondLetter}`)
+
 // --------------------------------------
 // Exercise 8 - For loop and if statement
 
