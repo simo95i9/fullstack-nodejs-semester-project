@@ -56,6 +56,7 @@ console.log(`diet = [${diet}]`)
 
 // You really like your daily diet from last exercise. Copy it to a new array called dinnerTray so you can give it to a friend.
 const dinnerTray = diet.slice()
+const alsoDinnerTray = [...diet] // another solution
 console.log(`dinnerTray = ${dinnerTray}`)
 
 
@@ -74,6 +75,12 @@ for (const letter of lettersExpanded) {
     }
 }
 console.log()
+
+
+// another solution
+for (let i=0; i<lettersExpanded.length; i++) {
+    // blah
+}
 
 
 // alternative, possibly better, solution
