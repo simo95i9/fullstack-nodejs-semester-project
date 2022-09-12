@@ -1,0 +1,14 @@
+{
+    "name": "our-first-try",
+    "version": "1.0.0",
+    "type": "module",
+    "dependencies": {
+        "express": "^4.18.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.19"
+    },
+    "scripts": {
+        "start": "nodemon app.js"
+    }
+}
