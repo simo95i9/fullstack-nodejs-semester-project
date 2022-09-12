@@ -1,6 +1,6 @@
-const CrudItem = require("./cruditem")
+import CrudItem from "./cruditem.js"
 
-class Weapon extends CrudItem {
+export default class Weapon extends CrudItem {
     #name
     #kind
     #length
@@ -41,6 +41,25 @@ class Weapon extends CrudItem {
             wikipedia: this.wikipedia
         }
     }
-}
 
-module.exports = Weapon
+    static fromRequestBody(body) {
+        if (body === null) { return null }
+        if (body.name === undefined) { return null }
+        if (body.kind === undefined) { return null }
+        if (body.length === undefined) { return null }
+        if (body.ammunition === undefined) { return null }
+        if (body.origin_region === undefined) { return null }
+        if (body.origin_period === undefined) { return null }
+        if (body.wikipedia === undefined) { return null }
+
+        return new Weapon(
+            body.name,
+            body.kind,
+            body.length,
+            body.ammunition,
+            body.origin_region,
+            body.origin_period,
+            body.wikipedia
+        )
+    }
+}

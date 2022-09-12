@@ -1,6 +1,6 @@
-const Crypto = require("crypto")
+import Crypto from "crypto"
 
-class CrudItem {
+export default class CrudItem {
     #id
 
     constructor(id) {
@@ -15,5 +15,3 @@ class CrudItem {
         }
     }
 }
-
-module.exports = CrudItem

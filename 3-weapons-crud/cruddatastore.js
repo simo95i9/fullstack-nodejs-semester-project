@@ -1,6 +1,6 @@
-const CrudItem = require("./cruditem")
+import CrudItem from "./cruditem.js"
 
-class CrudDatastore {
+export default class CrudDatastore {
     #data = [];
 
     constructor() {
@@ -31,6 +31,12 @@ class CrudDatastore {
     getItemById = (id) => {
         return this.#data.find(item => item.id === id)
     }
-}
 
-module.exports = CrudDatastore
+    deleteAllItems = () => {
+        this.#data = []
+    }
+
+    deleteItemById = (id) => {
+        this.#data = this.#data.filter(item => item.id !== id)
+    }
+}

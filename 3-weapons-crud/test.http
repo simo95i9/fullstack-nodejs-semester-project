@@ -1,0 +1,78 @@
+GET http://localhost:8080/api/v1/weapons/reset
+
+
+###
+GET http://localhost:8080/api/v1/weapons/
+
+> {%
+client.test("First GET request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body.length !== 0, "Response is empty")
+  client.assert(response.body.length === 2, "Did not receive two weapon objects")
+});
+%}
+
+###
+POST http://localhost:8080/api/v1/weapons
+Content-Type: application/json
+
+{
+  "blah": 10,
+  "foo": "bar",
+  "baz": "bat"
+}
+
+###
+GET http://localhost:8080/api/v1/weapons/
+
+> {%
+client.test("Third GET request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body.length !== 0, "Response is empty")
+  client.assert(response.body.length === 2, "Did not receive two weapon objects")
+});
+%}
+
+###
+POST http://localhost:8080/api/v1/weapons
+Content-Type: application/json
+
+{
+    "name": "M67 grenade",
+    "kind": "Hand grenade",
+    "length": "~10cm",
+    "ammunition": null,
+    "origin_region": "United States of America",
+    "origin_period": "1968",
+    "wikipedia": "https://en.wikipedia.org/wiki/M67_grenade"
+}
+
+###
+GET http://localhost:8080/api/v1/weapons/
+
+> {%
+client.test("Fourth GET request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body.length !== 0, "Response is empty")
+  client.assert(response.body.length === 3, "Did not receive three weapon objects")
+});
+%}
+
+###
+DELETE http://localhost:8080/api/v1/weapons/
+
+> {%
+client.test("First DELETE request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+###
+GET http://localhost:8080/api/v1/weapons/
+
+> {%
+client.test("Second GET request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body.length === 0, "Response is not empty")
+});
+%}
