@@ -29,6 +29,14 @@ export default class Weapon extends CrudItem {
     get origin_period() { return this.#origin_period }
     get wikipedia() { return this.#wikipedia }
 
+    set name(name) { this.#name = name }
+    set kind(kind) { this.#kind = kind }
+    set length(length) { this.#length = length }
+    set ammunition(ammunition) { this.#ammunition = ammunition }
+    set origin_region(origin_region) { this.#origin_region = origin_region }
+    set origin_period(origin_period) { this.#origin_period = origin_period }
+    set wikipedia(wikipedia) { this.#wikipedia = wikipedia }
+
     toJSON = () => {
         return {
             id: this.id,
