@@ -39,18 +39,36 @@ app.get("/api/v1/weapons/:id", (req, res) => {
 
 app.post("/api/v1/weapons", (req, res) => {
     const item = Weapon.fromRequestBody(req.body)
+
+    if (item === null) {
+        res.status(400).send()
+        return
+    }
+
     datastore.addItem(item)
-    res.send(item)
+    res.send()
 })
 
 app.put("/api/v1/weapons", (req, res) => {
-    console.log("req.body = ", req.body)
+    const item = Weapon.fromRequestBody(req.body)
+
+    if (item === null) {
+        res.status(400).send()
+        return
+    }
+
+    datastore.addItem(item)
     res.send()
 })
 
-app.patch("/api/v1/weapons", (req, res) => {
-    console.log("req.body = ", req.body)
-    res.send()
+app.patch("/api/v1/weapons/:id", (req, res) => {
+    const item = datastore.getItemById(req.params.id)
+
+    Object.entries(req.query)
+        .filter(([key, value]) => Weapon.prototype.hasOwnProperty(key))
+        .forEach(([key, value]) => item[key] = value)
+
+    res.send(item)
 })
 
 app.delete("/api/v1/weapons/", (req, res) => {
