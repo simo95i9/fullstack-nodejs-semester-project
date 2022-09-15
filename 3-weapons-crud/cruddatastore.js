@@ -1,18 +1,16 @@
 import CrudItem from "./cruditem.js"
 
 export default class CrudDatastore {
-    #data = [];
+    #data = new Map()
 
     constructor() {
     }
-
-    get data() { return this.#data }
 
     addItem = (item) => {
         if (!(item instanceof CrudItem))
             return
 
-        this.#data.push(item)
+        this.#data.set(item.id, item)
     }
 
     addItems = (items) => {
@@ -25,18 +23,21 @@ export default class CrudDatastore {
     }
 
     getAllItems = () => {
-        return this.#data
+        return [...this.#data.values()]
     }
 
     getItemById = (id) => {
-        return this.#data.find(item => item.id === id)
+        if (!this.#data.has(id))
+            return null
+
+        return this.#data.get(id)
     }
 
     deleteAllItems = () => {
-        this.#data = []
+        this.#data.clear()
     }
 
     deleteItemById = (id) => {
-        this.#data = this.#data.filter(item => item.id !== id)
+        return this.#data.delete(id)
     }
 }
