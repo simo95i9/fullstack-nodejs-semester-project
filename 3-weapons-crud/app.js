@@ -18,7 +18,7 @@ import express from "express"
 const app = express()
 const port = 8080
 
-app.use(Utils.basic_logger)
+app.use(Utils.basic_logger())
 app.use(express.json())
 
 app.get("/api/v1/weapons", (req, res) => {
