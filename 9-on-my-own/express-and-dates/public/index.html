@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date Homework</title>
+    <style>
+        * { font-variant-numeric: tabular-nums; }
+    </style>
+    <link href="tailwind.css" rel="stylesheet">
+    <script src="main.js" type="module"></script>
+</head>
+<body class="bg-gray-200">
+<main class="flex flex-col items-center w-full h-full py-12 px-8 gap-8">
+    <h1 class="text-3xl font-black text-center">It's dangerous to go alone, take this!<br>📆</h1>
+    <div class="flex flex-row gap-3 flex-grow">
+        <button class="w-1/4 p-2 font-medium bg-cyan-500 hover:bg-cyan-400 active:bg-cyan-600"
+                id="submit-button">
+            opret en ny nedtælling
+        </button>
+        <div class="flex flex-row flex-wrap gap-3">
+            <div><label for="title-input">titel: </label><input type="text" name="title" id="title-input"></div>
+            <div><label for="description-input">beskrivelse: </label><input type="text" name="description" id="description-input"></div>
+            <div><label for="name-input">dit navn: </label><input type="text" name="name" id="name-input"></div>
+            <div><label for="year-input">år: </label><input type="number" name="year" id="year-input" style="width: 8ch"></div>
+            <div><label for="month-select">måned: </label><select name="month" id="month-select">
+                <option value="1">januar</option>
+                <option value="2">februar</option>
+                <option value="3">marts</option>
+                <option value="4">april</option>
+                <option value="5">maj</option>
+                <option value="6">juni</option>
+                <option value="7">juli</option>
+                <option value="8">august</option>
+                <option value="9">september</option>
+                <option value="10">oktober</option>
+                <option value="11">november</option>
+                <option value="12">december</option>
+            </select></div>
+            <div><label for="date-select">dag: </label><select name="date" id="date-select"></select></div>
+
+            <div><label for="time-input">tidspunkt: </label><input type="time" name="time" id="time-input"></div>
+            <div><label for="timezone-select">tidszone: </label><select name="timezone" id="timezone-select"></select></div>
+        </div>
+    </div>
+    <div class="flex flex-row flex-wrap w-full gap-3 justify-items-start" id="countdown-list">
+
+    </div>
+</main>
+</body>
+</html>

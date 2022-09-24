@@ -37,4 +37,22 @@ app.get("/actors", (req, res) => {
 })
 
 
+app.get("/date", (req, res) => {
+    const now = new Date()
+
+    const year = now.getFullYear().toString().padStart(4, "0")
+    const month = (now.getMonth()+1).toString().padStart(2, "0")
+    const date = now.getDate().toString().padStart(2, "0")
+    const hours = now.getHours().toString().padStart(2, "0")
+    const minutes = now.getMinutes().toString().padStart(2, "0")
+    const seconds = now.getSeconds().toString().padStart(2, "0")
+    const millis = now.getMilliseconds().toString()
+    const tzSign = Math.sign(now.getTimezoneOffset()) > 0 ? "+" : "-"
+    const tzHours = Math.floor(Math.abs(now.getTimezoneOffset()) / 60).toString().padStart(2, "0")
+    const tzMinutes = Math.floor(now.getTimezoneOffset() % 60).toString().padStart(2, "0")
+
+    res.contentType("text/plain").send(`${year}-${month}-${date} ${hours}:${minutes}:${seconds}.${millis}${tzSign}${tzHours}${tzMinutes}`)
+})
+
+
 app.listen(3000, "localhost", () => { console.log("Server is running and listening on port", 3000) })

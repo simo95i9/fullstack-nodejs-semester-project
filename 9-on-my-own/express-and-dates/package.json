@@ -1,0 +1,27 @@
+{
+    "name": "express-and-dates",
+    "version": "1.0.0",
+    "type": "module",
+    "dependencies": {
+        "@js-temporal/polyfill": "^0.4.2",
+        "esbuild": "^0.15.8",
+        "express": "^4.18.1",
+        "npm-run-all": "^4.1.5",
+        "sanitize-html": "^2.7.2",
+        "tailwindcss": "^3.1.8"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    },
+    "scripts": {
+        "start": "npm run prod",
+        "dev": "npm-run-all --parallel watch:**",
+        "watch:js": "esbuild src/main.js --outfile=public/main.js --bundle --sourcemap --watch",
+        "watch:css": "tailwindcss -o public/tailwind.css --watch",
+        "watch:server": "nodemon app.js",
+        "prod": "npm-run-all --sequential build:**",
+        "build:js": "esbuild src/main.js --outfile=public/main.js --bundle --minify",
+        "build:css": "tailwindcss -o public/tailwind.css --minify",
+        "build:server": "node app.js"
+    }
+}
