@@ -7,7 +7,7 @@ export const article = {
     author: "Simon Gredal",
     title: "JavaScript: The Sort of Alright Parts",
     content: [
-        {type: "figure", src: "/images/cthulhu.jpg", alt: "Cthulhu rising out of the water near a shore", text: "The only way to keep your sanity is not to think about it", class: "26x9"},
+        {type: "figure", src: "/images/cthulhu.webp", alt: "Cthulhu rising out of the water near a shore", text: "The only way to keep your sanity is not to think about it", class: "26x9"},
         {
             type: "p",
             text: `Express is amazing :) 

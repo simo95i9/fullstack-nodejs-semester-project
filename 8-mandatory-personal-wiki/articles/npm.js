@@ -7,7 +7,7 @@ export const article = {
     author: "Simon Gredal",
     title: "An Introduction to the Node.js Package Manager",
     content: [
-        {type: "figure", src: "/images/packages2.jpeg", alt: "A person carrying hundreds of packages on a bicycle", text: "A person carrying hundreds of packages on a bicycle", class: "21x9"},
+        {type: "figure", src: "/images/packages2.webp", alt: "A person carrying hundreds of packages on a bicycle", class: "21x9"},
         {
             type: "p",
             text: `NPM is an essential tool for building Node.js software. 
