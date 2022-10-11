@@ -1,0 +1,29 @@
+main image,
+article img,
+section img {
+    border: 1px solid var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+}
+
+.\31 6x9 {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+}
+
+.\32 1x9 {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 21 / 9;
+}
+
+.\32 6x9 {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 26 / 9;
+}
+

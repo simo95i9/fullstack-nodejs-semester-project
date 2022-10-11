@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simon's Wiki</title>
+
+    <%- include('partials/common-head') %>
+</head>
+<body>
+<main>
+    <%- include('partials/header') %>
+    <h1>Wiki</h1>
+
+    <% if (typeof wiki.article !== 'undefined') { %>
+        <%- include('components/article', {article: wiki.article}); %>
+    <% } else if (typeof wiki.articles !== 'undefined') { %>
+        <% if (wiki.articles.length === 0) { %>
+            <p>Oh no, it looks like I haven't written anything yet. Sorry.</p>
+        <% } else { %>
+            <p>Why don't you try one of our fine articles?</p>
+            <section>
+                <% for (const article of wiki.articles) { %>
+                    <aside>
+                        <a href="<%- article.slug %>"><h3> <%= article.title %> </h3></a>
+                        <% const image = article.content.find(c => c.type === "img" || c.type === "figure") %>
+                        <% if (image) { %>
+                            <%- include('components/figure', {figure: {...image, class: "16x9"}}) %>
+                        <% } %>
+                    </aside>
+                <% } %>
+            </section>
+        <% } %>
+    <% } %>
+</main>
+<%- include('partials/footer', {...footer}) %>
+</body>
+</html>
