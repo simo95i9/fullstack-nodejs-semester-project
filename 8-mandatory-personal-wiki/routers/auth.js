@@ -1,5 +1,10 @@
 import {Router, urlencoded} from "express"
 
+const users = new Map()
+// Don't actually do any of this
+const me = {email: "simon@gred.al", password: "password", name: "Simon"}
+users.set(me.email, me)
+
 export const router = Router()
 
 router.use(urlencoded())
@@ -24,17 +29,33 @@ router.post("/signout", (req, res) => {
 })
 
 router.post("/signin", (req, res) => {
-    if (req.body.email !== "simon@gred.al" || req.body.password !== "password") {
-        next("route")
+    if (!users.has(req.body.email)) {
+        res.send("error: no such user")
         return
     }
 
-    req.session.auth = {user: {name: "Simon Gredal"}}
+    if (users.get(req.body.email).password !== req.body.password) {
+        res.send("error: bad credentials")
+        return
+    }
+
+
+    req.session.auth = {user: users.get(req.body.email)}
     res.redirect("/auth/")
 })
 
 router.post("/signup", (req, res) => {
+    if (users.has(req.body.email)) {
+        res.send("error: user already exists")
+        return
+    }
 
+    // Don't actually do any of this
+    const user = {email: req.body.email, password: req.body.password, name: req.body.name}
+    users.set(user.email, user)
+
+    req.session.auth = {user}
+    res.redirect("/auth/")
 })
 
 
