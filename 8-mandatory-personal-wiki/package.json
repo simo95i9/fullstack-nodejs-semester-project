@@ -3,10 +3,12 @@
     "version": "1.0.0",
     "type": "module",
     "dependencies": {
-        "npm-run-all": "^4.1.5",
-        "express": "^4.18.1",
+        "@js-temporal/polyfill": "^0.4.2",
         "ejs": "^3.1.8",
-        "@js-temporal/polyfill": "^0.4.2"
+        "express": "^4.18.1",
+        "express-session": "^1.17.3",
+        "npm-run-all": "^4.1.5",
+        "outdent": "^0.8.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.20"
@@ -19,7 +21,9 @@
         "watch:server": "nodemon app.js"
     },
     "nodemonConfig": {
-        "ignore": ["public"],
+        "ignore": [
+            "public"
+        ],
         "ext": "js, mjs, json, html"
     }
 }

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simon's Wiki</title>
+
+    <%- include('partials/common-head') %>
+</head>
+<body>
+<main>
+    <%- include('partials/header') %>
+
+    <%- include('components/article', {article: wiki.article}); %>
+</main>
+<%- include('partials/footer', {...footer}) %>
+</body>
+</html>

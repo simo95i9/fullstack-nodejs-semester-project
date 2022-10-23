@@ -1,45 +1,42 @@
-import articles from "./articles/articles.js"
-
+import { auth } from "./utils.js"
 import {Temporal} from "@js-temporal/polyfill"
-
-const templateOptions = {
-    footer: { copyrightYear: Temporal.Now.zonedDateTimeISO().year}
-}
-
+import {article as about_article} from "./articles/about.js"
 import express from "express"
-const app = express()
-const port = process.env.PORT ?? 3000
+import {router as wikiRouter} from "./routers/wiki.js"
+import {router, router as authRouter} from "./routers/auth.js"
+import session from "express-session";
 
-app.use(express.static("public"))
-app.use(express.json())
+3
+const app = express()
+const host = process.env.HOST ?? "localhost"
+const port = process.env.PORT ?? 3000
 
 app.set("view engine", "ejs")
 
+const options = {secret: process.env.SESSION_SECRET ?? "secret"}
+app.use(session(options))
+app.use(express.static("public"))
+app.use(express.json())
+
+app.use("/auth", authRouter)
+app.use("/wiki", wikiRouter)
+
+
+app.locals = {
+    footer: { copyrightYear: Temporal.Now.zonedDateTimeISO().year}
+}
+
 app.get("/", (req, res) => {
-    res.render("index", {...templateOptions})
+    res.render("index")
 })
 
-app.get("/wiki/", (req, res) => {
-    const wikiOptions = {
-        articles: [...articles.values()]
-    }
-
-    res.render('wiki', {...templateOptions, wiki: wikiOptions})
-})
-
-app.get("/wiki/:slug", (req, res, next) => {
-    if (!articles.has(req.params.slug))
-        next();
-
-    const wikiOptions = {
-        article: articles.get(req.params.slug)
-    }
-
-    res.render('wiki', {...templateOptions, wiki: wikiOptions})
+app.get("/about/", (req, res) => {
+    res.render("about", {about: { article: about_article }})
 })
 
 app.use((req, res, next) => {
-    res.status(404).render("404", {...templateOptions})
+    res.status(404).render("404")
 })
 
-app.listen(port, () => { console.log("express listening on port", port)})
+
+app.listen(port, host, () => { console.log(`express listening on ${host}:${port}`)})

@@ -10,3 +10,6 @@ import {article as javascript_article} from "./javascript.js"
 articles.set(javascript_article.slug, javascript_article)
 
 export default articles
+export function addArticle(article) {
+    articles.set(article.slug, article)
+}

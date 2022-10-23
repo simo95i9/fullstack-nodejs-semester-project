@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simon's Wiki</title>
+
+    <%- include('partials/common-head') %>
+</head>
+<body>
+<main>
+    <%- include('partials/header') %>
+
+    <h1>Auth</h1>
+
+    <% if (typeof auth === "undefined") { %>
+
+        <p>You are not currently signed in.</p>
+
+        <h2>Sign In</h2>
+        <form action="signin" method="post">
+            <label for="signin-email">Email</label>
+            <input type="email" name="email" id="signin-email">
+
+            <label for="signin-password-password">Password</label>
+            <input type="password" name="password" id="signin-password">
+
+            <button type="submit">Sign In</button>
+        </form>
+
+        <h2>Sign Up</h2>
+        <form action="signup", method="post">
+            <label for="signup-email">Email</label>
+            <input type="email" name="email" id="signup-email">
+
+            <label for="signup-password">Password</label>
+            <input type="password" name="password" id="signup-password">
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+    <% } else { %>
+
+        <p>
+            You are signed in as
+            <%= auth.user.name %>
+        </p>
+
+        <h2>Sign Out</h2>
+        <form action="signout" method="post">
+            <button type="submit">Sign Out</button>
+        </form>
+
+    <% } %>
+</main>
+<%- include('partials/footer', {...footer}) %>
+</body>
+</html>
