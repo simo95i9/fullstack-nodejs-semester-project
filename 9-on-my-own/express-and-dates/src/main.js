@@ -1,5 +1,6 @@
 import {Temporal} from "@js-temporal/polyfill";
-const api = "http://localhost:3000/api/v1"
+const location = window.location
+const api  = "/api/v1"
 let countdowns = []
 let data_needs_update = true
 
