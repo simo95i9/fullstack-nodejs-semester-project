@@ -1,0 +1,7 @@
+header nav {
+    margin-bottom: 0;
+}
+
+body > main {
+    min-height: calc(100vh - 64px - 22rem);
+}
